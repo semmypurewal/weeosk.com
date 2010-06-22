@@ -1,0 +1,117 @@
+body  {
+  font-family: sans-serif;
+  background: black;
+  color: yellow;
+}
+
+#SearchView  {
+  margin-top: 4em;	     
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  border: 2px solid black;
+  padding: 1em;
+  -moz-border-radius: 1em;
+  -webkit-border-radius: 1em;
+  border-radius: 1em;
+  background: black;
+  width: 600px;
+  color: #0ff;
+}
+
+#SearchView .tagline {
+  padding-top: 1em;	    
+}
+
+#search_term_input  {
+  margin-top: 5em;
+}
+
+#WeeoskView  {
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+}
+
+#WeeoskView .display_area {
+  height: 80%;
+}
+
+#weeosk_term  {
+  text-align: center;
+  font-weight: bold;
+  font-size: 3em;
+  height: 10%;
+}
+
+#weeosk_item  {
+
+}
+
+#controls  {
+  text-align: center;
+  height: 10%;
+}
+
+.twitter  {
+}
+
+.twitter .text  {
+  padding-top:2em;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: bold;
+  font-family: sans-serif;
+  font-size: 3em;
+  text-align: center;
+}
+
+.twitter .user_id  {
+  margin: auto;
+  padding-top: 2em;
+  text-align:center;
+}
+
+.twitter .profile_image  {
+  display: none;	 
+  text-align: center; 
+}
+
+.flickr .image {
+  text-align: center;	
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: bold;
+  font-size: 3em;
+}
+
+.flickr .title  {
+  margin: auto;
+  padding-top: 1em;
+  text-align:center;
+}
+
+
+.twitpic .text  {
+  padding-top: 1em;
+  text-align: center;
+}
+
+.twitpic .profile_image  {
+  display: none;
+}
+
+.twitpic .image  {
+  max-height:40%;
+  max-width:40%;
+  margin: auto;
+}
+
+.twitpic .twitpic_image  {
+  text-align: center;
+}
+
+
+
+
