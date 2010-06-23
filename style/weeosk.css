@@ -37,7 +37,12 @@ body  {
   height: 80%;
 }
 
+#weeosk_header  {
+  width: 100%;
+}
+
 #weeosk_term  {
+  width: 100%;
   text-align: center;
   font-weight: bold;
   font-size: 3em;
@@ -103,15 +108,16 @@ body  {
 }
 
 .twitpic .image  {
-  max-height:40%;
-  max-width:40%;
-  margin: auto;
-}
-
-.twitpic .twitpic_image  {
   text-align: center;
 }
 
+#weeosk_image  {
+  max-height: 60%;
+  max-width: 60%;	       
+}
 
 
 
+#debug_area  {
+  text-align: right;	     
+}

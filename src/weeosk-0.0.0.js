@@ -57,14 +57,33 @@ SearchViewController.prototype.hide = function()  {
 
 /********** WeeoskViewController ***********/
 function WeeoskViewController(v)  {
+    var that = this;
     this.view = v;
+    this.controlTimeout = null;
+    //v.mousemove( function() { that.showControls(); } );
 }
 
 WeeoskViewController.prototype.show = function()  {
     this.view.fadeIn(500);
+    this.showControls();
 
     //create new weeosk controller with the current search term
     this.wc = new WeeoskController(this.searchTerm);
+}
+
+WeeoskViewController.prototype.showControls = function()  {
+    var that = this;
+    $("#controls").fadeTo(500,100);
+    $("#weeosk_term").fadeTo(500,100);
+    if(this.controlTimeout !== null) clearTimeout(this.controlTimeout);
+    this.controlTimeout = setTimeout(function() { that.hideControls(); }, 2000);
+}
+
+WeeoskViewController.prototype.hideControls = function()  {
+    //$("#weeosk_term").fadeTo(500,0);
+    //$("#controls").fadeTo(500,0);
+    //$("#weeosk_term").fadeOut();
+    //$("#controls").fadeOut();
 }
 
 WeeoskViewController.prototype.hide = function()  {
@@ -93,6 +112,9 @@ function WeeoskController(searchTerm)  {
     var displayTime = 6000;
     var spotterControllers = [];
 
+    var displays = ["#weeosk_item","#weeosk_buffer"];
+    var displayIndex = 0;
+
     spotterControllers.push(new TwitterController("twitter.search",{searchString:searchTerm,frequency:60},weeosk));
     spotterControllers.push(new FlickrController("flickr.search",{api_key:"867d7e82cd6b196e83e27d308d97a7f0",tags:searchTerm,frequency:60}, weeosk));
     spotterControllers.push(new TwitpicController("twitpic.search",{searchString:searchTerm, frequency:60},weeosk));
@@ -118,11 +140,25 @@ function WeeoskController(searchTerm)  {
     }
 
     this.display = function()  {
-	$("#weeosk_item").fadeOut(fadeTime, function()  {
-		$("#weeosk_item").html(weeosk.currentItem());
-		$("#weeosk_item").fadeIn(fadeTime);
+	$(displays[displayIndex]).fadeOut(fadeTime, function()  {
+		//increment the displayIndex
+		displayIndex = (displayIndex+1)%displays.length;
+		//set the html of the buffer
+		$(displays[(displayIndex+1)%displays.length]).html(weeosk.currentItem());
+		//fade in the displayIndex
+
+		//set size and position of item
+		$(displays[displayIndex]).fadeIn(fadeTime);
 	    });
     }
+
+    /*this.display = function()  {
+	$("#weeosk_item").fadeOut(fadeTime, function()  {
+		$("#weeosk_item").html($("#weeosk_buffer").html());
+		$("#weeosk_buffer").html(weeosk.currentItem());
+		$("#weeosk_item").fadeIn(fadeTime);
+	    });
+	    }*/
 
     this.play();
 }
@@ -134,34 +170,45 @@ function Weeosk(maxSize)  {
     var items = {};
     var indices = {};
     var itemTypeCount = 0;
-    var currentItem = null;
-    var nextItem = null;
+    var current = null;
+    var next = null;
 
     this.add = function(newItem)  {
-	if(items[newItem[0]] === undefined)  {
-	    items[newItem[0]] = [];
+	var type = newItem[0];
+	var content = newItem[1]
+	
+	if(items[type] === undefined)  {
+	    items[type] = [];
 	    itemTypeCount = itemTypeCount+1;
 	}
-	indices[newItem[0]] = 0;  //keep the freshest stuff showing up soonest
-	items[newItem[0]].unshift(newItem[1]);
-	if(items[newItem[0]].length > MAX_ITEMS)
-	    items[newItem[0]].pop();
+	items[type].unshift(content);
+	indices[type] = 0;  //keep the freshest stuff showing up soonest
 
+	//current = items[type][0];  //set current to the first element
+	//next = items[type][1%items[type].length];
+
+	if(items[type].length > MAX_ITEMS)
+	    items[type].pop();
     }
 
     this.currentItem = function()  {
 	var rand = Math.floor(Math.random()*itemTypeCount);
 	var randElement;
 	var result;
-
+	
 	//pick a random type (e.g. twitter, flickr, etc)
 	for(var i in items)  {
 	    if(rand === 0)
 		randElement = i;
 	    rand--;
 	}
+
+	//result = current;
+	//current = next;
+	$("#debug_area").html("displaying "+randElement+" "+indices[randElement]+" of "+items[randElement].length);
 	result = items[randElement][indices[randElement]];
 	indices[randElement]=(indices[randElement]+1)%items[randElement].length;
+
 	return result;
     }
 }
@@ -208,7 +255,7 @@ FlickrController = function(type, options, weeosk)  {
     SpotterController.call(this, type, options, weeosk);
     this.markup = function(photo)  { 
 	var result = "<div class='flickr'>"
-	+"<div  class='image'><img src='"+photo.url+"'></img></div>"
+	+"<div  class='image'><img id='weeosk_image' src='"+photo.url+"'></img></div>"
 	+"<div class='title'>"+photo.title+"</div>"
 	+"</div>"
 	return result;
@@ -220,7 +267,7 @@ TwitpicController = function(type, options, weeosk)  {
     this.markup = function(twitpic)  { 
 	var result = "<div class='twitpic'>"
 	+"<div class='profile_image'><img src='"+twitpic.profile_image_url+"'></img></div>"
-	+"<div class='twitpic_image'><img class='image' src='"+twitpic.twitpic_full_url+"'></img></div>"
+	+"<div class='image'><img id='weeosk_image' src='"+twitpic.twitpic_full_url+"'></img></div>"
 	+"<div class='text'>"+twitpic.text+"</div>"
 	+"</div>"
 	return result;
