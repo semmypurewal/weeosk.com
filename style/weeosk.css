@@ -33,9 +33,15 @@ body  {
   height: 100%;
 }
 
-#WeeoskView .display_area {
+#WeeoskView #display_area {
   height: 80%;
 }
+
+.weeosk_item  {
+
+}
+
+
 
 #weeosk_header  {
   width: 100%;
@@ -49,20 +55,17 @@ body  {
   height: 10%;
 }
 
-#weeosk_item  {
-
-}
-
 #controls  {
   text-align: center;
   height: 10%;
 }
 
 .twitter  {
+
 }
 
 .twitter .text  {
-  padding-top:2em;
+  //padding-top:2em;
   width: 90%;
   margin-left: auto;
   margin-right: auto;
@@ -111,9 +114,9 @@ body  {
   text-align: center;
 }
 
-#weeosk_image  {
-  max-height: 60%;
-  max-width: 60%;	       
+.weeosk_image  {
+  //max-height: 60%;
+  //max-width: 60%;	       
 }
 
 
