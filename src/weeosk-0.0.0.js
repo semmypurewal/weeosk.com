@@ -1,3 +1,16 @@
+/**
+ * TODO: Spotter twitter/twitpic bug: search on a unique hashtag, the json request becomes undefined
+ * TODO: timestamps on items (wow, that's gonna suck because we didn't plan for it)
+ * TODO: style the search again button better
+ * TODO: Real-time flickr feeds (requires new spotter module)
+ * TODO: create exclude:twitpic option in spotter twitter module
+ * TODO: add trends to the main search page
+ * TODO: add About Us, Blog, FAQ
+ * TODO: add google analytics
+ * TODO: launch Weeosk Alpha 0.1.2
+ * TODO: add ads to second search and beyond (google ads?)
+ */
+
 function init()  {
     var ac = new ApplicationController();
 }
@@ -61,7 +74,7 @@ function WeeoskViewController(v)  {
     this.view = v;
     this.controlTimeout = null;
 
-    //v.mousemove( function() { that.showControls(); } );
+    v.mousemove( function() { that.showControls(); } );
 }
 
 WeeoskViewController.prototype.show = function()  {
@@ -81,15 +94,15 @@ WeeoskViewController.prototype.show = function()  {
 
 WeeoskViewController.prototype.showControls = function()  {
     var that = this;
-    $("#controls").fadeTo(500,100);
-    $("#weeosk_term").fadeTo(500,100);
+    $("#controls").fadeIn();
+    $("#weeosk_term").fadeIn();
     if(this.controlTimeout !== null) clearTimeout(this.controlTimeout);
     this.controlTimeout = setTimeout(function() { that.hideControls(); }, 2000);
 }
 
 WeeoskViewController.prototype.hideControls = function()  {
     //$("#weeosk_term").fadeTo(500,0);
-    //$("#controls").fadeTo(500,0);
+    $("#controls").fadeOut();
     //$("#weeosk_term").fadeOut();
     //$("#controls").fadeOut();
 }
@@ -176,7 +189,7 @@ function WeeoskController(searchTerm)  {
 		var element = $("#weeosk_item"+displayIndex+" img.weeosk_image");
 		if(element !== null)  {
 		    var scaleDimension = (element.width()/element.height() > container.width()/container.height())?"width":"height";
-		    element[scaleDimension]("90%");
+		    element[scaleDimension]("80%");
 		}
 		//set position of item
 		var element = $("#weeosk_item"+displayIndex);
@@ -270,14 +283,21 @@ SpotterController = function(type, options, weeosk)  {
 
     s.register(this);
     s.spot();
+
+    this.tweetLinkify = function(s) {
+	s =  s.replace(new RegExp('(http\:\/\\S*)', 'g'),"<a target =\"_blank\" href=\"$1\">$1</a>");
+	s = s.replace(new RegExp('(^|\ )@(\\S+)', 'g'), "<a target='_blank' href=\'http://www.twitter.com/$2\'>@$2</a>");
+	return s;
+    }
 }
 
 TwitterController = function(type, options, weeosk)  {
     SpotterController.call(this, type, options, weeosk);
     this.markup = function(tweet)  {
 	var result = "<div class='twitter'>" 
-	+"<div class='text'>"+tweet.text+"</div>"
-	+"<div class='user_id'>"+tweet.from_user+"</div>"
+	+"<div class='text'>"+this.tweetLinkify(tweet.text)+"</div>"
+	+"<div class='user_id'><a target='_blank' href='http://www.twitter.com/"+tweet.from_user+"'>"
+        +tweet.from_user+"</a> (via <a target='_blank' href='http://www.twitter.com'>Twitter</a>)</div>"
 	+"<div class='profile_image'><img src='"+tweet.profile_image_url+"'></img></div>"
 	+"</div>";
 	return result;
@@ -289,8 +309,8 @@ FlickrController = function(type, options, weeosk)  {
     SpotterController.call(this, type, options, weeosk);
     this.markup = function(photo)  { 
 	var result = "<div class='flickr'>"
-	+"<div  class='image'><img class='weeosk_image' src='"+photo.url+"'></img></div>"
-	+"<div class='title'>"+photo.title+"</div>"
+	+"<div  class='image'><a target='_blank' href='"+photo.user_url+"'><img class='weeosk_image' src='"+photo.url+"'></a></img></div>"
+	+"<div class='title'>"+photo.title+" (via <a target='_blank' href='http://www.flickr.com'>Flickr</a>)</div>"
 	+"</div>"
 	return result;
     }
@@ -299,10 +319,14 @@ FlickrController = function(type, options, weeosk)  {
 TwitpicController = function(type, options, weeosk)  {
     SpotterController.call(this, type, options, weeosk);
     this.markup = function(twitpic)  { 
+	var url = twitpic.text.match(new RegExp('http://twitpic.com/\\S*','g'), '')[0];
+	twitpic.text = twitpic.text.replace(url,'');
 	var result = "<div class='twitpic'>"
 	+"<div class='profile_image'><img src='"+twitpic.profile_image_url+"'></img></div>"
-	+"<div class='image'><img class='weeosk_image' src='"+twitpic.twitpic_full_url+"'></img></div>"
-	+"<div class='text'>"+twitpic.text+"</div>"
+	+"<div class='image'><a target='_blank' href='"+url+"'><img class='weeosk_image' src='"+twitpic.twitpic_full_url+"'></img></a></div>"
+	+"<div class='text'>"+this.tweetLinkify(twitpic.text)+"</div>"
+	+"<div class='user_id'><a target='_blank' href='http://www.twitter.com/"+twitpic.from_user+"'>"+twitpic.from_user+"</a>"
+	+" (via <a target='_blank' href='http://www.twitpic.com'>Twitpic</a>)</div>"
 	+"</div>"
 	return result;
     }

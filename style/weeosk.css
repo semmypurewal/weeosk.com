@@ -41,6 +41,25 @@ body  {
 
 }
 
+#WeeoskView a:link  {
+  color:yellow;
+  text-decoration: none;
+}
+
+#WeeoskView a:visited  {
+  color:yellow;
+  text-decoration: none;
+}
+
+#WeeoskView a:hover  {
+  color:yellow;
+  text-decoration: underline;
+}
+
+#WeeoskView a:active  {
+  color:yellow;
+  text-decoration: none;
+}
 
 
 #weeosk_header  {
@@ -103,6 +122,7 @@ body  {
 
 .twitpic .text  {
   padding-top: 1em;
+  font-size: 1.5em;
   text-align: center;
 }
 
@@ -112,6 +132,11 @@ body  {
 
 .twitpic .image  {
   text-align: center;
+}
+
+.twitpic .user_id  {
+  padding-top: .5em;
+  text-align: center;	 
 }
 
 .weeosk_image  {
