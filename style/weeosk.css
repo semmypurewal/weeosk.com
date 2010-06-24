@@ -24,8 +24,44 @@ body  {
 }
 
 #search_term_input  {
-  margin-top: 5em;
+  margin-top: 2em;
 }
+
+#SearchView #trends  {
+  padding-top: 3em;
+
+}
+
+#SearchView #trends h5  {
+  margin-bottom: 1em;
+}
+
+#SearchView #trends p  {
+  font-size: smaller;
+  margin-top: .5em;
+}
+
+#SearchView a:link.trend  {
+  text-decoration:none;	    
+  color: #0ff;
+}
+
+#SearchView a:visited.trend  {
+  text-decoration:none;	    
+  color: #0ff;
+}
+
+#SearchView a:active.trend  {
+  text-decoration:none;	    
+  color: #0ff;
+}
+
+#SearchView a:hover.trend  {
+  text-decoration:underline;	    
+  color: #0ff;
+}
+
+
 
 #WeeoskView  {
   margin-left: auto;

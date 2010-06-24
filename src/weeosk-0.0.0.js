@@ -2,15 +2,14 @@
  * TODO: style the search again button better
  * TODO: Real-time flickr feeds (requires new spotter module)
  * TODO: create exclude:twitpic option in spotter twitter module
- * TODO: add trends to the main search page
- * TODO: add About Us, Blog, FAQ
+ * TODO: add About Us, FAQ
  * TODO: add google analytics
  * TODO: launch Weeosk Alpha 0.1.2
  * TODO: add ads to second search and beyond (google ads?)
  */
 
 function init()  {
-    var ac = new ApplicationController();
+    window.ac = new ApplicationController();
 }
 
 /********** ApplicationController **********/
@@ -50,10 +49,15 @@ ApplicationController.prototype.toggle = function()  {
 
 
 /********** SearchViewController ***********/
-function SearchViewController(v)  {
+function SearchViewController(v, ac)  {
+    var trendSpotter;
     this.view = v;
+    this.appController = ac;
     document.getElementById("search_term_input").value = "";
     this.show();
+    trendSpotter = new spotter.Spotter("twitter.trends",{frequency:0, exclude:"hashtags"});
+    trendSpotter.register(this);
+    trendSpotter.spot();
 }
 
 SearchViewController.prototype.show = function()  {
@@ -62,6 +66,28 @@ SearchViewController.prototype.show = function()  {
 
 SearchViewController.prototype.hide = function()  {
     this.view.fadeOut(500);    
+}
+
+SearchViewController.prototype.notify = function(data)  {
+    var t;
+    var temp;
+    $("#trends").append("<p id='trends1'>");
+    for(t in data.trends.slice(0,5))  {
+	if(t !== "4")
+	    $("#trends1").append("<a class='trend' href='#' onclick='window.ac.go(\""+data.trends[t].name+"\");'>"+data.trends[t].name+"</a>, ");
+	else
+	    $("#trends1").append("<a class='trend' href='#' onclick='window.ac.go(\""+data.trends[t].name+"\");'>"+data.trends[t].name+"</a>");
+    }
+
+    $("#trends").append("<p id='trends2'>");
+    var temp = data.trends.slice(5,10);
+    for(t in temp)  {
+	if(t !== "4")
+	    $("#trends2").append("<a class='trend' href='#' onclick='window.ac.go(\""+temp[t].name+"\");'>"+temp[t].name+"</a>, ");
+	else
+	    $("#trends2").append("<a class='trend' href='#' onclick='window.ac.go(\""+temp[t].name+"\");'>"+temp[t].name+"</a>");
+    }
+    //alert(data);
 }
 /********** End SearchViewController ***********/
 
