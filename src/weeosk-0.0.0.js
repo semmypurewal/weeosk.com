@@ -214,14 +214,14 @@ function WeeoskController(searchTerm)  {
 	else if(seconds < 3600)  {
 	    result = "about " + Math.round(seconds/60) + " minutes ago";
 	}
-	else if(seconds < 216000)  {
+	else if(seconds < 86400)  {
 	    result = "about " + Math.round(seconds/3600) + " hours ago";
 	}
-	else if(seconds < 5184000)  {
-	    result = "about " + Math.round(seconds/216000) + " days ago";
+	else if(seconds < 604800)  {
+	    result = "about " + Math.round(seconds/86400) + " days ago";
 	}
-	else if(seconds < 36288000)  {
-	    result = "about " + Mth.round(seconds/5184000) + " weeks ago";
+	else if(seconds < 4233600)  {
+	    result = "about " + Mth.round(seconds/604800) + " weeks ago";
 	}
 	else  {
 	    result = "forever ago";
