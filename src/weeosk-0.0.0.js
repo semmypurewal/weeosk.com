@@ -49,10 +49,9 @@ ApplicationController.prototype.toggle = function()  {
 
 
 /********** SearchViewController ***********/
-function SearchViewController(v, ac)  {
+function SearchViewController(v)  {
     var trendSpotter;
     this.view = v;
-    this.appController = ac;
     document.getElementById("search_term_input").value = "";
     this.show();
     trendSpotter = new spotter.Spotter("twitter.trends",{frequency:0, exclude:"hashtags"});
