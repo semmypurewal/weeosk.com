@@ -1,10 +1,12 @@
 /**
+ * TODO: fix css bugs -- image scaling, homepage scroll bar
  * TODO: style the search again button better
  * TODO: Real-time flickr feeds (requires new spotter module)
  * TODO: create exclude:twitpic option in spotter twitter module
  * TODO: add About Us, FAQ
  * TODO: add google analytics
  * TODO: launch Weeosk Alpha 0.1.2
+ * TODO: try to implement back button
  * TODO: add ads to second search and beyond (google ads?)
  */
 
