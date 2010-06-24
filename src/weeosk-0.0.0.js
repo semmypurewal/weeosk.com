@@ -1,6 +1,4 @@
 /**
- * TODO: Spotter twitter/twitpic bug: search on a unique hashtag, the json request becomes undefined
- * TODO: timestamps on items (wow, that's gonna suck because we didn't plan for it)
  * TODO: style the search again button better
  * TODO: Real-time flickr feeds (requires new spotter module)
  * TODO: create exclude:twitpic option in spotter twitter module
@@ -169,6 +167,7 @@ function WeeoskController(searchTerm)  {
     /**
      * Fade out the current item
      * set the next buffered item
+     * process the timestamp
      * position/scale the currently buffered item
      * fade in the currently buffered item
      */
@@ -177,9 +176,14 @@ function WeeoskController(searchTerm)  {
 		//increment the displayIndex
 		displayIndex = (displayIndex+1)%2;
 		
-		//set the html of the buffer
+		//set the next buffered item
 		$("#weeosk_item"+(displayIndex+1)%2).html(weeosk.currentItem());
 		
+		//process the timestamp (we have to do this here b/c it could be shown multiple times)
+		var timestamp = new Date($("#weeosk_item"+displayIndex+" .timestamp").html());
+		var now = new Date();
+		var rel = relativeTime((now.getTime()-timestamp.getTime())/1000);
+		$("#weeosk_item"+displayIndex+" .relative_timestamp").html(rel);
 
 		//fade in the currently buffered item
 		$("#weeosk_item"+displayIndex).fadeIn(fadeTime);
@@ -197,6 +201,35 @@ function WeeoskController(searchTerm)  {
 		element.css({'position':'relative','top':top+'px'});
 
 	    });
+    }
+
+    var relativeTime = function(seconds)  {
+	var result;
+	if(!seconds) {
+	    result = "";
+	}
+	else if(seconds < 60)  {
+	    result = "about " + Math.round(seconds) +" seconds ago";
+	}
+	else if(seconds < 3600)  {
+	    result = "about " + Math.round(seconds/60) + " minutes ago";
+	}
+	else if(seconds < 216000)  {
+	    result = "about " + Math.round(seconds/3600) + " hours ago";
+	}
+	else if(seconds < 5184000)  {
+	    result = "about " + Math.round(seconds/216000) + " days ago";
+	}
+	else if(seconds < 36288000)  {
+	    result = "about " + Mth.round(seconds/5184000) + " weeks ago";
+	}
+	else  {
+	    result = "forever ago";
+	}
+
+	result = result.replace(new RegExp("( 1 \\S*)s ","g"), "$1 ");
+
+	return result;
     }
 
     this.play();
@@ -297,8 +330,9 @@ TwitterController = function(type, options, weeosk)  {
 	var result = "<div class='twitter'>" 
 	+"<div class='text'>"+this.tweetLinkify(tweet.text)+"</div>"
 	+"<div class='user_id'><a target='_blank' href='http://www.twitter.com/"+tweet.from_user+"'>"
-        +tweet.from_user+"</a> (via <a target='_blank' href='http://www.twitter.com'>Twitter</a>)</div>"
+        +tweet.from_user+"</a> <span class='additional_info'><span class='relative_timestamp'></span> via <a target='_blank' href='http://www.twitter.com'>twitter</a></span></div>"
 	+"<div class='profile_image'><img src='"+tweet.profile_image_url+"'></img></div>"
+	+"<div class='timestamp' style='display:none'>"+tweet.created_at+"</div>"
 	+"</div>";
 	return result;
     }
@@ -310,7 +344,8 @@ FlickrController = function(type, options, weeosk)  {
     this.markup = function(photo)  { 
 	var result = "<div class='flickr'>"
 	+"<div  class='image'><a target='_blank' href='"+photo.user_url+"'><img class='weeosk_image' src='"+photo.url+"'></a></img></div>"
-	+"<div class='title'>"+photo.title+" (via <a target='_blank' href='http://www.flickr.com'>Flickr</a>)</div>"
+	+"<div class='title'>"+photo.title+" (via <a target='_blank' href='http://www.flickr.com'>flickr</a>)</div>"
+	+"<div class='timestamp' style='display:none'></div>"
 	+"</div>"
 	return result;
     }
@@ -326,7 +361,8 @@ TwitpicController = function(type, options, weeosk)  {
 	+"<div class='image'><a target='_blank' href='"+url+"'><img class='weeosk_image' src='"+twitpic.twitpic_full_url+"'></img></a></div>"
 	+"<div class='text'>"+this.tweetLinkify(twitpic.text)+"</div>"
 	+"<div class='user_id'><a target='_blank' href='http://www.twitter.com/"+twitpic.from_user+"'>"+twitpic.from_user+"</a>"
-	+" (via <a target='_blank' href='http://www.twitpic.com'>Twitpic</a>)</div>"
+	+" <span class='additional_info'><span class='relative_timestamp'></span> via <a target='_blank' href='http://www.twitpic.com'>twitpic</a></span></div>"
+	+"<div class='timestamp' style='display:none'>"+twitpic.created_at+"</div>"
 	+"</div>"
 	return result;
     }

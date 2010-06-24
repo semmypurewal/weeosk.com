@@ -144,8 +144,11 @@ body  {
   //max-width: 60%;	       
 }
 
-
-
 #debug_area  {
   text-align: right;	     
+}
+
+.additional_info  {
+  font-size: smaller;
+  font-style: italic;		  
 }
