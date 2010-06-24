@@ -113,6 +113,7 @@ body  {
 
 
 #weeosk_header  {
+
   width: 100%;
 }
 
@@ -165,8 +166,13 @@ body  {
 
 .flickr .title  {
   margin: auto;
-  padding-top: 1em;
+  font-size: 1.5em;
   text-align:center;
+}
+
+.flickr .user_id  {
+  padding-top: .5em;
+  text-align: center;	
 }
 
 
