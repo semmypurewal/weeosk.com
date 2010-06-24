@@ -1,5 +1,4 @@
 /**
- * TODO: fix css bugs -- image scaling, homepage scroll bar
  * TODO: style the search again button better
  * TODO: Real-time flickr feeds (requires new spotter module)
  * TODO: create exclude:twitpic option in spotter twitter module
@@ -218,9 +217,10 @@ function WeeoskController(searchTerm)  {
 		//set size of image
 		var container = $("#display_area");
 		var element = $("#weeosk_item"+displayIndex+" img.weeosk_image");
-		if(element !== null)  {
+		if(element.width() !== null)  {
 		    var scaleDimension = (element.width()/element.height() > container.width()/container.height())?"width":"height";
-		    element[scaleDimension]("80%");
+		    var px = Math.ceil(container[scaleDimension]()*.80);
+		    element[scaleDimension](px+"px");
 		}
 		//set position of item
 		var element = $("#weeosk_item"+displayIndex);
