@@ -5,7 +5,7 @@ html  {
 body  {
   height: 100%;
   font-family: sans-serif;
-  background: black;
+  background: #222;
   color: yellow;
 }
 
@@ -18,16 +18,29 @@ body  {
   color: #0ff;
 }
 
-#SearchView #container  {
+
+#PageView  {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em 1em 1em 1em;
+  width: 600px;
+  color: #0ff;
+}
+
+.header  {
+  text-align: center;
+}
+
+#container  {
   border: 2px solid #0ff;
   padding: 1em;
   -moz-border-radius: 1em;
   -webkit-border-radius: 1em;
   border-radius: 1em;
-  background: black;
+  background: #222;
 }
 
-#SearchView #footer  {
+#footer  {
   margin-top: .5em;
   font-size: smaller;
   width: 100%;
@@ -38,8 +51,17 @@ body  {
   padding-top: 1em;	    
 }
 
+.search_form  {
+  padding-top: 1em;
+}
+
 #search_term_input  {
-  margin-top: 2em;
+  display: inline;
+}
+
+#go_button  {
+  margin-bottom: -.75em;	    
+  display: inline;
 }
 
 #SearchView #trends  {
@@ -55,22 +77,26 @@ body  {
   padding-top: .5em;
 }
 
-#SearchView a:link  {
+img  {
+  border: 0;
+}
+
+a:link  {
   text-decoration:none;	    
   color: #0ff;
 }
 
-#SearchView a:visited  {
+a:visited  {
   text-decoration:none;	    
   color: #0ff;
 }
 
-#SearchView a:active  {
+a:active  {
   text-decoration:none;	    
   color: #0ff;
 }
 
-#SearchView a:hover  {
+a:hover  {
   text-decoration:underline;	    
   color: #0ff;
 }
@@ -207,4 +233,18 @@ body  {
 .additional_info  {
   font-size: smaller;
   font-style: italic;		  
+}
+
+h2  {
+  color: yellow;    
+}
+
+h3.question  {
+  margin-top:2em;	     
+  font-size: 1em;
+  color: yellow;
+}
+
+h4  {
+  color: yellow;
 }
