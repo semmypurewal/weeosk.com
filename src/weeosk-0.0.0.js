@@ -54,7 +54,7 @@ function SearchViewController(v)  {
     this.view = v;
     document.getElementById("search_term_input").value = "";
     this.show();
-    trendSpotter = new spotter.Spotter("twitter.trends",{frequency:0, exclude:"hashtags"});
+    trendSpotter = new spotter.Spotter("twitter.trends",{frequency:0});
     trendSpotter.register(this);
     trendSpotter.spot();
 }
