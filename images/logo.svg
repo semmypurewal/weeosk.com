@@ -144,6 +144,58 @@
          stdDeviation="1.722832"
          id="feGaussianBlur4079" />
     </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter4116"
+       x="-0.080016667"
+       width="1.1600333"
+       y="-0.11996252"
+       height="1.239925">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.6878516"
+         id="feGaussianBlur4118" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter4240"
+       x="-0.070138712"
+       width="1.1402774"
+       y="-0.11689798"
+       height="1.233796">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.9131009"
+         id="feGaussianBlur4242" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter4244"
+       x="-0.018420049"
+       width="1.0368401"
+       y="-0.11961712"
+       height="1.2392342">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.9131009"
+         id="feGaussianBlur4246" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter4248">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.13092457"
+         id="feGaussianBlur4250" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter4252">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.35955973"
+         id="feGaussianBlur4254" />
+    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -152,9 +204,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.5205354"
-     inkscape:cx="331.74013"
-     inkscape:cy="855.60597"
+     inkscape:zoom="1.0845397"
+     inkscape:cx="372.04724"
+     inkscape:cy="710.34999"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -181,6 +233,57 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
+    <g
+       id="g4163"
+       style="stroke-width:1.99000001;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter4244)"
+       transform="translate(0,52.421811)">
+      <rect
+         style="fill:none;stroke:#00ffff;stroke-width:1.99000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         id="rect4132"
+         width="249.26329"
+         height="38.384491"
+         x="257.90909"
+         y="258.6991"
+         ry="9.305335" />
+      <text
+         id="text4128"
+         y="287.21652"
+         x="266.41248"
+         style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Georgia;-inkscape-font-specification:Georgia"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:none;stroke:#00ffff;stroke-width:1.99000001;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:Arial Rounded MT Bold;-inkscape-font-specification:'Arial Rounded MT Bold,'"
+           y="287.21652"
+           x="266.41248"
+           id="tspan4130"
+           sodipodi:role="line">search again!</tspan></text>
+    </g>
+    <g
+       id="g4158"
+       style="stroke-width:1.99000001;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter4240)"
+       transform="translate(0,52.147448)"
+       inkscape:export-filename="/Users/semmy/Sites/weeosk.com/images/go_button.png"
+       inkscape:export-xdpi="107.03625"
+       inkscape:export-ydpi="107.03625">
+      <text
+         id="text4120"
+         y="287.21655"
+         x="169.84196"
+         style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:none;stroke:#00ffff;stroke-width:1.99000001;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:Georgia;-inkscape-font-specification:Georgia"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;stroke-width:1.99000001;stroke-miterlimit:4;stroke-dasharray:none;font-family:Arial Rounded MT Bold;-inkscape-font-specification:'Arial Rounded MT Bold, Bold'"
+           y="287.21655"
+           x="169.84196"
+           id="tspan4122"
+           sodipodi:role="line">go!</tspan></text>
+      <rect
+         ry="9.5217867"
+         y="258.25269"
+         x="163.82954"
+         height="39.277344"
+         width="65.462311"
+         id="rect4124"
+         style="fill:none;stroke:#00ffff;stroke-width:1.99000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    </g>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
@@ -265,8 +368,8 @@
     </g>
     <text
        xml:space="preserve"
-       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:0.50000000000000000;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:Georgia;-inkscape-font-specification:Georgia"
-       x="422.7811"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ff0000;fill-opacity:1;stroke:none;font-family:Georgia;-inkscape-font-specification:Georgia"
+       x="423.0311"
        y="217.81227"
        id="text4063"
        inkscape:export-filename="/Users/semmy/Sites/weeosk.com/images/weeosk_alpha2.png"
@@ -274,8 +377,127 @@
        inkscape:export-ydpi="99.772507"><tspan
          sodipodi:role="line"
          id="tspan4065"
-         x="422.7811"
+         x="423.0311"
          y="217.81227"
-         style="font-size:22px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;stroke:none;stroke-width:0.50000000000000000;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:Arial;-inkscape-font-specification:Arial">alpha</tspan></text>
+         style="font-size:22px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;stroke:none;font-family:Arial;-inkscape-font-specification:Arial">alpha</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;filter:url(#filter4116);font-family:Arial Rounded MT Bold;-inkscape-font-specification:'Arial Rounded MT Bold, Bold'"
+       x="217.81087"
+       y="330.69012"
+       id="text4112"><tspan
+         sodipodi:role="line"
+         id="tspan4114"
+         x="217.81087"
+         y="330.69012"
+         style="fill:none;stroke:#00ffff;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" /></text>
+    <g
+       id="g4184"
+       transform="translate(0,52.421811)"
+       style="stroke-width:1.99000001;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:export-filename="/Users/semmy/Sites/weeosk.com/images/searchbutton.png"
+       inkscape:export-xdpi="131.35358"
+       inkscape:export-ydpi="131.35358">
+      <rect
+         style="fill:none;stroke:#00ffff;stroke-width:1.99000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         id="rect4186"
+         width="249.26329"
+         height="38.384491"
+         x="257.90909"
+         y="258.6991"
+         ry="9.305335" />
+      <text
+         id="text4188"
+         y="287.21652"
+         x="266.41248"
+         style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Georgia;-inkscape-font-specification:Georgia"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:none;stroke:#00ffff;stroke-width:1.99000001;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:Arial Rounded MT Bold;-inkscape-font-specification:'Arial Rounded MT Bold,'"
+           y="287.21652"
+           x="266.41248"
+           id="tspan4190"
+           sodipodi:role="line">search again!</tspan></text>
+    </g>
+    <g
+       id="g4192"
+       transform="translate(0,52.147448)"
+       style="stroke-width:1.99000001;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:export-filename="/Users/semmy/Sites/weeosk.com/images/go_button.png"
+       inkscape:export-xdpi="107.03625"
+       inkscape:export-ydpi="107.03625">
+      <text
+         id="text4194"
+         y="287.21655"
+         x="169.84196"
+         style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:none;stroke:#00ffff;stroke-width:1.99000001;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:Georgia;-inkscape-font-specification:Georgia"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;stroke-width:1.99000001;stroke-miterlimit:4;stroke-dasharray:none;font-family:Arial Rounded MT Bold;-inkscape-font-specification:'Arial Rounded MT Bold, Bold'"
+           y="287.21655"
+           x="169.84196"
+           id="tspan4196"
+           sodipodi:role="line">go!</tspan></text>
+      <rect
+         ry="9.5217867"
+         y="258.25269"
+         x="163.82954"
+         height="39.277344"
+         width="65.462311"
+         id="rect4198"
+         style="fill:none;stroke:#00ffff;stroke-width:1.99000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    </g>
+    <g
+       id="g4200"
+       transform="translate(0,52.421811)"
+       style="stroke:#ffffff;stroke-opacity:1;filter:url(#filter4252)"
+       inkscape:export-filename="/Users/semmy/Sites/weeosk.com/images/searchbutton.png"
+       inkscape:export-xdpi="131.35358"
+       inkscape:export-ydpi="131.35358">
+      <rect
+         ry="9.305335"
+         y="258.6991"
+         x="257.90909"
+         height="38.384491"
+         width="249.26329"
+         id="rect4202"
+         style="fill:none;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <text
+         xml:space="preserve"
+         style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-opacity:1;font-family:Georgia;-inkscape-font-specification:Georgia"
+         x="266.41248"
+         y="287.21652"
+         id="text4204"><tspan
+           sodipodi:role="line"
+           id="tspan4206"
+           x="266.41248"
+           y="287.21652"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:none;stroke:#ffffff;stroke-opacity:1;font-family:Arial Rounded MT Bold;-inkscape-font-specification:'Arial Rounded MT Bold,'">search again!</tspan></text>
+    </g>
+    <g
+       id="g4208"
+       transform="translate(0,52.147448)"
+       style="stroke:#ffffff;stroke-opacity:1;filter:url(#filter4248)"
+       inkscape:export-filename="/Users/semmy/Sites/weeosk.com/images/go_button.png"
+       inkscape:export-xdpi="107.03625"
+       inkscape:export-ydpi="107.03625">
+      <text
+         xml:space="preserve"
+         style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:none;stroke:#ffffff;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:Georgia;-inkscape-font-specification:Georgia"
+         x="169.84196"
+         y="287.21655"
+         id="text4210"><tspan
+           sodipodi:role="line"
+           id="tspan4212"
+           x="169.84196"
+           y="287.21655"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;stroke:#ffffff;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:Arial Rounded MT Bold;-inkscape-font-specification:'Arial Rounded MT Bold, Bold'">go!</tspan></text>
+      <rect
+         style="fill:none;stroke:#ffffff;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         id="rect4214"
+         width="65.462311"
+         height="39.277344"
+         x="163.82954"
+         y="258.25269"
+         ry="9.5217867" />
+    </g>
   </g>
 </svg>
