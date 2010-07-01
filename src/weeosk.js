@@ -138,13 +138,8 @@ function WeeoskController(searchTerm)  {
     var timer = null;
     var fadeTime = 500;
     var displayTime = 6000;
-    //var spotterControllers = [];
 
     var displayIndex = 0;
-
-    //spotterControllers.push(new TwitterController("twitter.search",{searchString:searchTerm,frequency:60},weeosk));
-    //spotterControllers.push(new FlickrController("flickr.feeds",{tags:searchTerm,frequency:60}, weeosk));
-    //spotterControllers.push(new TwitpicController("twitpic.search",{searchString:searchTerm, frequency:60},weeosk));
 
     this.destroy = function() {
 	clearTimeout(timer);
