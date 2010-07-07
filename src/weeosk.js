@@ -21,9 +21,11 @@ function ApplicationController()  {
 ApplicationController.prototype.go = function(searchTerm)  {
     var that = this;
     if(searchTerm !== "")  {
+
 	this.wvc.setSearchTerm(searchTerm);
 	that.toggle();
     }
+
 }
 
 ApplicationController.prototype.toggle = function()  {
@@ -48,12 +50,12 @@ function SearchViewController(v)  {
     this.view = v;
     document.getElementById("search_term_input").value = "";
     this.show();
-    this.trendSpotter = new spotter.Spotter("twitter.trends",{frequency:120});
-    this.trendSpotter.register(this);
-    this.trendSpotter.spot();
 }
 
 SearchViewController.prototype.show = function()  {
+    this.trendSpotter = new spotter.Spotter("twitter.trends",{frequency:120});
+    this.trendSpotter.register(this);
+    this.trendSpotter.spot();
     this.view.fadeIn(500);
 }
 
@@ -70,7 +72,7 @@ SearchViewController.prototype.notify = function(data)  {
     $("#trends").append("<p id='trends1'>");
     for(t in data.trends)  {
 	temp = "#trends"+Math.floor(t/5);
-	$(temp).append("<a class='trend' href='/' onclick='window.ac.go(\""+data.trends[t].name+"\");return false;'>"+data.trends[t].name+"</a>");
+	$(temp).append("<a class='trend' href='' onclick='window.ac.go(\""+data.trends[t].name+"\"); return false;'>"+data.trends[t].name+"</a>");
 	if(t !== "4" && t !== "9")
 	    $(temp).append(", ");;
     }
