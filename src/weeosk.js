@@ -1,5 +1,4 @@
 /**
- * TODO: create exclude:twitpic option in spotter twitter module
  * TODO: try to implement back button
  * TODO: add ads to second search and beyond (google ads?)
  */
@@ -46,13 +45,12 @@ ApplicationController.prototype.toggle = function()  {
 
 /********** SearchViewController ***********/
 function SearchViewController(v)  {
-    var trendSpotter;
     this.view = v;
     document.getElementById("search_term_input").value = "";
     this.show();
-    trendSpotter = new spotter.Spotter("twitter.trends",{frequency:0});
-    trendSpotter.register(this);
-    trendSpotter.spot();
+    this.trendSpotter = new spotter.Spotter("twitter.trends",{frequency:120});
+    this.trendSpotter.register(this);
+    this.trendSpotter.spot();
 }
 
 SearchViewController.prototype.show = function()  {
@@ -60,11 +58,14 @@ SearchViewController.prototype.show = function()  {
 }
 
 SearchViewController.prototype.hide = function()  {
+    this.trendSpotter.stop();
     this.view.fadeOut(500);    
 }
 
 SearchViewController.prototype.notify = function(data)  {
     var temp;
+    $("#trends0").remove();
+    $("#trends1").remove();
     $("#trends").append("<p id='trends0'>");
     $("#trends").append("<p id='trends1'>");
     for(t in data.trends)  {
@@ -89,6 +90,7 @@ function WeeoskViewController(v)  {
 WeeoskViewController.prototype.show = function()  {
     this.view.fadeIn(500);
     this.showControls();
+
     $("#weeosk_item0").html("<div class='flickr'><div class='image'><img class='weeosk_image' src='images/loading.gif'></img></div></div>");
     $("#weeosk_item0").show();
     //center vertically
@@ -130,6 +132,7 @@ WeeoskViewController.prototype.setSearchTerm = function(term)  {
 
 /********** WeeoskController ******************/
 function WeeoskController(searchTerm)  {
+    //sanity check, this should never happen
     if(searchTerm === null || searchTerm === undefined || searchTerm === "")
 	throw new Error("undefined search term Weeosk");
 
@@ -144,7 +147,6 @@ function WeeoskController(searchTerm)  {
     this.destroy = function() {
 	clearTimeout(timer);
 	weeosk.destroy();
-
 	setTimeout(function() {$("#weeosk_item0").html("") }, 1000);
     }
 
@@ -159,7 +161,6 @@ function WeeoskController(searchTerm)  {
 		    that.display();
 		}, displayTime);
 	}
-
     }
 
     this.stop = function()  {
