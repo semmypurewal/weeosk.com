@@ -10,8 +10,8 @@ function init()  {
 /********** ApplicationController **********/
 function ApplicationController()  {
     var that = this;
-    this.svc = new SearchViewController($("#SearchView"));
-    this.wvc = new WeeoskViewController($("#WeeoskView"));
+    this.svc = new SearchView($("#SearchView"));
+    this.wvc = new WeeoskView($("#WeeoskView"));
     this.visibleController = this.svc;
     $("#go_button").click(function() { that.go(document.getElementById("search_term_input").value); return false; });
     $("#restart_button").click(function() { that.toggle(); return false; });
@@ -21,7 +21,6 @@ function ApplicationController()  {
 ApplicationController.prototype.go = function(searchTerm)  {
     var that = this;
     if(searchTerm !== "")  {
-
 	this.wvc.setSearchTerm(searchTerm);
 	that.toggle();
     }
@@ -45,26 +44,26 @@ ApplicationController.prototype.toggle = function()  {
 /********** End ApplicationController **********/
 
 
-/********** SearchViewController ***********/
-function SearchViewController(v)  {
+/********** SearchView ***********/
+function SearchView(v)  {
     this.view = v;
     document.getElementById("search_term_input").value = "";
     this.show();
 }
 
-SearchViewController.prototype.show = function()  {
+SearchView.prototype.show = function()  {
     this.trendSpotter = new spotter.Spotter("twitter.trends",{frequency:120});
     this.trendSpotter.register(this);
     this.trendSpotter.spot();
     this.view.fadeIn(500);
 }
 
-SearchViewController.prototype.hide = function()  {
+SearchView.prototype.hide = function()  {
     this.trendSpotter.stop();
     this.view.fadeOut(500);    
 }
 
-SearchViewController.prototype.notify = function(data)  {
+SearchView.prototype.notify = function(data)  {
     var temp;
     $("#trends0").remove();
     $("#trends1").remove();
@@ -78,18 +77,18 @@ SearchViewController.prototype.notify = function(data)  {
     }
     $("#trends").fadeIn("slow")
 }
-/********** End SearchViewController ***********/
+/********** End SearchView ***********/
 
 
-/********** WeeoskViewController ***********/
-function WeeoskViewController(v)  {
+/********** WeeoskView ***********/
+function WeeoskView(v)  {
     var that = this;
     this.view = v;
     this.controlTimeout = null;
     v.mousemove( function() { that.showControls(); } );
 }
 
-WeeoskViewController.prototype.show = function()  {
+WeeoskView.prototype.show = function()  {
     this.view.fadeIn(500);
     this.showControls();
 
@@ -105,7 +104,7 @@ WeeoskViewController.prototype.show = function()  {
     this.wc = new WeeoskController(this.searchTerm);
 }
 
-WeeoskViewController.prototype.showControls = function()  {
+WeeoskView.prototype.showControls = function()  {
     var that = this;
     $("#controls").fadeIn();
     $("#weeosk_term").fadeIn();
@@ -113,11 +112,11 @@ WeeoskViewController.prototype.showControls = function()  {
     this.controlTimeout = setTimeout(function() { that.hideControls(); }, 2000);
 }
 
-WeeoskViewController.prototype.hideControls = function()  {
+WeeoskView.prototype.hideControls = function()  {
     $("#controls").fadeOut();
 }
 
-WeeoskViewController.prototype.hide = function()  {
+WeeoskView.prototype.hide = function()  {
     this.view.fadeOut(500);
 
     //destroy weeosk controller
@@ -126,11 +125,11 @@ WeeoskViewController.prototype.hide = function()  {
     $("#weeosk_item1").html("");
 }
 
-WeeoskViewController.prototype.setSearchTerm = function(term)  {
+WeeoskView.prototype.setSearchTerm = function(term)  {
     $("#weeosk_term").text(term);
     this.searchTerm = term;
 }
-/********** End WeeoskViewController ***********/
+/********** End WeeoskView ***********/
 
 /********** WeeoskController ******************/
 function WeeoskController(searchTerm)  {
