@@ -16,6 +16,7 @@ function ApplicationController()  {
     $("#go_button").click(function() { that.go(document.getElementById("search_term_input").value); return false; });
     $("#restart_button").click(function() { that.toggle(); return false; });
     $("#search_term_input").keydown(function(event)  { if(event.keyCode === 13) that.go(document.getElementById("search_term_input").value); });
+
 }
 
 ApplicationController.prototype.go = function(searchTerm)  {
@@ -62,7 +63,7 @@ SearchView.prototype.hide = function()  {
     this.trendSpotter.stop();
     this.view.fadeOut(500);    
 }
-
+    
 SearchView.prototype.notify = function(data)  {
     var temp;
     $("#trends0").remove();
@@ -153,7 +154,7 @@ function WeeoskController(searchTerm)  {
 
     this.play = function()  {
 	if(!weeosk.ready()) {
-	    setTimeout(function() { that.play(); }, 500);
+	    setTimeout(function() { that.play(); }, 250);
 	}
 	else  {
 	    //preload first item
