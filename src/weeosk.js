@@ -53,7 +53,7 @@ function SearchView(v)  {
 }
 
 SearchView.prototype.show = function()  {
-    this.trendSpotter = new spotter.Spotter("twitter.trends",{frequency:120});
+    this.trendSpotter = new com.yellowsocket.spotter.Spotter("twitter.trends",{period:120});
     this.trendSpotter.register(this);
     this.trendSpotter.spot();
     this.view.fadeIn(500);
@@ -258,9 +258,9 @@ function Weeosk(searchTerm)  {
     var ready = false;
     var spotterControllers = [];
 
-    spotterControllers.push(new TwitterController("twitter.search",{searchString:searchTerm,frequency:60},this));
-    spotterControllers.push(new FlickrController("flickr.feeds",{tags:searchTerm,frequency:60}, this));
-    spotterControllers.push(new TwitpicController("twitpic.search",{searchString:searchTerm, frequency:60},this));
+    spotterControllers.push(new TwitterController("twitter.search",{q:searchTerm,period:60},this));
+    spotterControllers.push(new FlickrController("flickr.feeds",{tags:searchTerm,period:60}, this));
+    spotterControllers.push(new TwitpicController("twitpic.search",{q:searchTerm,period:60},this));
 
     this.add = function(newItem)  {
 	var type = newItem[0];
@@ -312,7 +312,7 @@ function Weeosk(searchTerm)  {
 
 /********** SpotterControllers *****/
 SpotterController = function(type, options, weeosk)  {
-    var s = new spotter.Spotter(type,options);
+    var s = new com.yellowsocket.spotter.Spotter(type,options);
     this.notify = function(data)  {
 	for(var i=data.length-1; i >=0; i--)
 	    weeosk.add([type.split(".")[0],this.markup(data[i])]);
