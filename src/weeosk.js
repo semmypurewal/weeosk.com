@@ -1,11 +1,13 @@
+
+
 /**
  * TODO: try to implement back button
  * TODO: add ads to second search and beyond (google ads?)
  */
 
-function init()  {
+$(document).ready(function()  {
     window.ac = new ApplicationController();
-}
+});
 
 /********** ApplicationController **********/
 function ApplicationController()  {
@@ -53,9 +55,9 @@ function SearchView(v)  {
 }
 
 SearchView.prototype.show = function()  {
-    this.trendSpotter = new com.yellowsocket.spotter.Spotter("twitter.trends",{period:120});
+    this.trendSpotter = new Spotter("twitter.trends",{period:120});
     this.trendSpotter.register(this);
-    this.trendSpotter.spot();
+    this.trendSpotter.start();
     this.view.fadeIn(500);
 }
 
@@ -312,7 +314,7 @@ function Weeosk(searchTerm)  {
 
 /********** SpotterControllers *****/
 SpotterController = function(type, options, weeosk)  {
-    var s = new com.yellowsocket.spotter.Spotter(type,options);
+    var s = new Spotter(type,options);
     this.notify = function(data)  {
 	for(var i=data.length-1; i >=0; i--)
 	    weeosk.add([type.split(".")[0],this.markup(data[i])]);
@@ -327,7 +329,7 @@ SpotterController = function(type, options, weeosk)  {
     }
 
     s.register(this);
-    s.spot();
+    s.start();
 
     this.tweetLinkify = function(s) {
 	s =  s.replace(new RegExp('(http\:\/\\S*)', 'g'),"<a target =\"_blank\" href=\"$1\">$1</a>");
