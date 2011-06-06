@@ -1,5 +1,3 @@
-
-
 /**
  * TODO: try to implement back button
  * TODO: add ads to second search and beyond (google ads?)
